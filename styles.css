@@ -1,0 +1,305 @@
+body {
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(120deg, #f9f9f9 0%, #ffffff 100%);
+  color: #333;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+header {
+  background-color: #000000;
+  color: white;
+  padding: 0.4rem 0;
+  text-align: center;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+/* Change font for website title */
+nav h1 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 25px; /* Adjust size as needed */
+  font-weight: bold;
+  color: #ffffff; /* Optional: Change color */
+}
+
+nav ul {
+  display: flex;
+  justify-content: center;
+  list-style-type: none;
+  padding: 6px;
+  margin: 6px;
+}
+
+nav ul li {
+  margin: 0 10px;
+}
+
+nav ul li a {
+  color: rgb(255, 254, 254);
+  text-decoration: none;
+  font-weight: 700;
+  margin: 50px;
+  padding: 30px;
+}
+
+nav ul li a:hover {
+  text-decoration: underline;
+}
+
+main {
+  padding: 20px;
+}
+
+.scrolling-statement {
+  text-align: center;
+  margin-top: 20px;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.scrolling-text {
+  display: inline-block;
+  animation: scroll 15s linear infinite;
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(140%);
+  }
+  100% {
+    transform: translateX(-200%);
+  }
+}
+
+.sensor-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  border: 2px solid #000;
+  gap: 10px;
+}
+
+.sensor, .prediction {
+  background-color: rgba(255, 255, 255, 0.903);
+  border: 1px solid #c10000bc;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  text-align: center;
+  width: 200px;
+}
+
+.sensor h2, .prediction h2 {
+  font-size: 1.2em;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #c10000bc;
+  padding-bottom: 5px;
+}
+
+.gauge {
+  width: 150px;
+  height: 120px;
+  display: inline-block;
+}
+
+.npk-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 80%;
+  flex-wrap: wrap;
+}
+
+.npk-sensor {
+  flex: 2;
+}
+
+.npk-sensor h1 {
+  text-align: center;
+  border-bottom: 2px solid #000;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+}
+
+.npk-sensor .npk-gauges {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.npk-sensor .npk-gauges > div {
+  flex: 1;
+  text-align: center;
+}
+
+.temperature-prediction {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.temperature-prediction h2 {
+  text-align: center;
+  width: 100%;
+  border-bottom: 2px solid #000;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+}
+
+.temperature-prediction .day {
+  flex: 1;
+  max-width: 150px;
+  margin: 10px;
+  text-align: center;
+  background-color: rgba(255, 228, 196, 0.7);
+  border: 1px solid #ffcc99;
+  border-radius: 8px;
+  padding: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.temperature-prediction .day h3 {
+  margin: 0 0 10px 0;
+  font-size: 1.1em;
+  color: #333;
+}
+
+.temperature-prediction .gauge {
+  width: 130px;
+  height: 120px;
+}
+
+.warning {
+  color: red;
+  font-weight: bold;
+}
+
+.hidden {
+  display: none;
+}
+
+.feedback-suggestions {
+  background-position: center;
+  margin: 20px auto; /* Center the section horizontally */
+  margin-top: 20px;
+  text-align: center;
+  background: rgb(255, 255, 255);
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 50%;
+}
+
+.feedback-suggestions h2 {
+  color: #000000;
+  margin-bottom: 20px;
+  font-size: 1.5em;
+}
+
+.feedback-suggestions form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.feedback-suggestions input, .feedback-suggestions textarea {
+  width: 60%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #dd0808;
+  border-radius: 4px;
+  font-size: 1em;
+}
+
+.feedback-suggestions button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  background-color: #0b0404;
+  color: rgb(193, 0, 0);
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 1.1em;
+}
+
+.feedback-suggestions button:hover {
+  background-color: #000000;
+}
+
+/* Footer */
+footer {
+  display: left;
+  justify-content: space-between;
+  text-align: center;
+  padding: 10px;
+  background: #000;
+  color: #fff;
+  margin-top: 50px;
+}
+
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+
+footer .social-icons a {
+  color: #fff;
+  text-decoration: none;
+  margin: 0 10px;
+}
+
+.social-media-icons {
+  text-align: center;
+  padding: 10px 0;
+}
+
+.social-media-icons a {
+  margin: 0 10px;
+  display: inline-block;
+}
+
+.social-media-icons img {
+  width: 20px;
+  height: 20px;
+  vertical-align: middle;
+  transition: transform 0.3s ease;
+}
+
+.social-media-icons a:hover img {
+  transform: scale(1.2);
+}
+
+.contact-info ul {
+  list-style: none;
+  padding: 0;
+}
+
+.contact-info li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.contact-info img {
+  width: 20px;
+  height: 20px;
+  margin-left: 8px;
+  transition: transform 0.3s ease;
+}
+
+.contact-info a {
+  text-decoration: none;
+  color: #fff;
+  font-weight: 700;
+}
+
+.contact-info a:hover img {
+  transform: scale(1.2);
+}

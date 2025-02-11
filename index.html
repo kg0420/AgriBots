@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AgriBotics: Smart Farming Dashboard</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.3.0/raphael.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/justgage/1.4.0/justgage.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  
+  <header>
+    <nav>
+      <h1>AgriBotics: Smart Farming Dashboard</h1>
+      <ul>
+        <li><a href="#home" onclick="showSection('Home')">Home</a></li>
+        <li><a href="#about" onclick="showSection('about')">About</a></li>
+        <li><a href="#feedback-suggestions" onclick="showSection('feedback-suggestions')">Feedback/Suggestions</a></li>
+        <li><a href="#Toolkit">Toolkit</a></li>
+        <li><a href="#contact" onclick="showSection('contact')">Contact</a></li>
+        <li><a href="#AgriBot">Agri Bot</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <section id="home" class="content-section">
+      <div class="scrolling-statement">
+        <div class="scrolling-text">
+          <h1>Welcome to our Sensor Dashboard - Monitoring Real-Time Data Efficiently!</h1>
+        </div>
+      </div>
+      <section class="sensor-container">
+        <div class="sensor">
+          <h2>Temperature:</h2>
+          <div id="gauge-temperature" class="gauge"></div>
+          <p id="temperature-reading"></p>
+        </div>
+        <div class="sensor">
+          <h2>Humidity:</h2>
+          <div id="gauge-humidity" class="gauge"></div>
+          <p id="humidity-reading"></p>
+          <p id="humidity-warning" class="warning"></p>
+        </div>
+        <div class="sensor">
+          <h2>Soil Moisture:</h2>
+          <div id="gauge-soilMoisture" class="gauge"></div>
+          <p id="soilMoisture-reading"></p>
+          <p id="moisture-warning" class="warning"></p>
+        </div>
+        <div class="sensor">
+          <h2>RainFall:</h2>
+          <div id="gauge-RainFall" class="gauge"></div>
+          <p id="RainFall-reading"></p>
+          <p id="RainFall-warning" class="warning"></p>
+        </div>
+        <div class="sensor">
+          <h2>Air Quality:</h2>
+          <div id="gauge-AirQuality" class="gauge"></div>
+          <p id="AirQuality-reading"></p>
+          <p id="AirQuality-warning" class="warning"></p>
+        </div>
+        <div class="npk-section">
+          <div class="npk-sensor">
+            <h1>NPK Sensor Reading</h1>
+            <div class="npk-gauges">
+              <div>
+                <h2>Nitrogen (N):</h2>
+                <div id="gauge-nitrogen" class="gauge"></div>
+                <p id="nitrogen-reading"></p>
+              </div>
+              <div>
+                <h2>Phosphorus (P):</h2>
+                <div id="gauge-phosphorus" class="gauge"></div>
+                <p id="phosphorus-reading"></p>
+              </div>
+              <div>
+                <h2>Potassium (K):</h2>
+                <div id="gauge-potassium" class="gauge"></div>
+                <p id="potassium-reading"></p>
+              </div>
+            </div>
+            <p id="npk-warning" class="warning"></p>
+            <div id="npk-info" class="hidden">
+              <p>Nitrogen (N): Promotes leafy growth and is essential for photosynthesis.</p>
+              <p>Phosphorus (P): Supports root development and flower and fruit production.</p>
+              <p>Potassium (K): Helps with overall plant health, including disease resistance and water regulation.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="temperature-prediction-container">
+        <h2>Weather Forecasting</h2>
+        <section class="temperature-prediction">
+          <div class="day" id="day1">
+            <h3>Day 1</h3>
+            <div id="gauge-day1" class="gauge"></div>
+            <p id="day1-reading"></p>
+          </div>
+          <div class="day" id="day2">
+            <h3>Day 2</h3>
+            <div id="gauge-day2" class="gauge"></div>
+            <p id="day2-reading"></p>
+          </div>
+          <div class="day" id="day3">
+            <h3>Day 3</h3>
+            <div id="gauge-day3" class="gauge"></div>
+            <p id="day3-reading"></p>
+          </div>
+          <div class="day" id="day4">
+            <h3>Day 4</h3>
+            <div id="gauge-day4" class="gauge"></div>
+            <p id="day4-reading"></p>
+          </div>
+        </section>
+      </section>
+    </section>
+    <section id="about" class="content-section" style="display: none;">
+      <h2>About Our Project</h2>
+      <p>AgriBotics is an innovative solution that integrates IoT, automation, and AI to revolutionize farming. Our system enhances precision agriculture by optimizing resource usage and improving yield predictions.</p>
+      
+      <h3>Key Features:</h3>
+      <ul>
+        <li><strong>Real-time Monitoring:</strong> Soil health, moisture, temperature, and air quality tracking.</li>
+        <li><strong>Automated Irrigation:</strong> Smart water management based on soil moisture levels.</li>
+        <li><strong>AI-Powered Pest Detection:</strong> Early pest identification using AI models.</li>
+        <li><strong>Weather Forecasting:</strong> Predicting weather conditions for optimized farming strategies.</li>
+        <li><strong>Mobile App Integration:</strong> Live data and alerts accessible via a mobile dashboard.</li>
+        <li><strong>Solar-Powered System:</strong> Sustainable energy solution for uninterrupted operations.</li>
+      </ul>
+      
+      <h3>Our Vision:</h3>
+      <p>To empower farmers with cutting-edge technology that enhances productivity, reduces waste, and promotes sustainable agriculture.</p>
+    
+      <h3>Our Team:</h3>
+      <p>Led by Krish Gupta and his dedicated team, we bring expertise in IoT, AI, and agriculture to create a seamless, automated, and data-driven farming experience.</p>
+    </section>
+    
+    <section id="sugestion-container">
+      <section id="feedback-suggestions" class="feedback-suggestions">
+        <h2>Feedback/Suggestions</h2>
+        <form action="#" method="POST">
+          <input type="text" name="name" id="Sugestions_input" placeholder="Your Name" required>
+          <input type="email" name="email" placeholder="Your Email" required>
+          <textarea name="message" placeholder="Your Message" required></textarea>
+          <button type="submit">Send Message</button>
+        </form>
+      </section>
+      </section>
+  </main>
+  <footer>
+    <div class="footer-logo">
+      <a href="https://th.bing.com/th/id/R.628fbb972c69eb6a3d7b46956d658b32?rik=glfFl%2fJThMEC1A&riu=http%3a%2f%2fcofa.bharatividyapeeth.edu%2fmedia%2fimages%2ftop_logo_280224.png&ehk=C9XbSBm%2b63dxq%2bvIP4XTeQBGJVjWMEhToVi4ZRNYvUs%3d&risl=&pid=ImgRaw&r=0" alt="Bharati Vidyapeeth Logo"></a>
+    </div>
+    <section id="contact">
+      <h2>Team AgriBots</h2>
+      <div class="contact-info">
+        <ul>
+          <a href="https://wa.me/7219570360" target="_blank">Krish Gupta</a><img src="https://th.bing.com/th/id/R.2e999afd5539964988836b831e9f6aac?rik=rTbGfI9WCyCqzQ&riu=http%3a%2f%2f3.bp.blogspot.com%2f-ezTfOgu3msI%2fURXOG7LXQpI%2fAAAAAAAAA4Q%2fNsMEuE9SZ_U%2fs1600%2fwhatsapp.png&ehk=a2CAQ5ZW0v0dyLq9QSc0iMWWEFIPvvwz3z2tj7mXGwQ%3d&risl=&pid=ImgRaw&r=0" alt="WhatsApp icon for Krish Gupta">     
+          <a href="https://wa.me/8262921113" target="_blank">Ritesh Bhakare</a><img src="https://th.bing.com/th/id/R.2e999afd5539964988836b831e9f6aac?rik=rTbGfI9WCyCqzQ&riu=http%3a%2f%2f3.bp.blogspot.com%2f-ezTfOgu3msI%2fURXOG7LXQpI%2fAAAAAAAAA4Q%2fNsMEuE9SZ_U%2fs1600%2fwhatsapp.png&ehk=a2CAQ5ZW0v0dyLq9QSc0iMWWEFIPvvwz3z2tj7mXGwQ%3d&risl=&pid=ImgRaw&r=0" alt="WhatsApp icon for Ritesh Bhakare">
+          <a href="https://wa.me/8983878799" target="_blank">Riya Diwakar</a><img src="https://th.bing.com/th/id/R.2e999afd5539964988836b831e9f6aac?rik=rTbGfI9WCyCqzQ&riu=http%3a%2f%2f3.bp.blogspot.com%2f-ezTfOgu3msI%2fURXOG7LXQpI%2fAAAAAAAAA4Q%2fNsMEuE9SZ_U%2fs1600%2fwhatsapp.png&ehk=a2CAQ5ZW0v0dyLq9QSc0iMWWEFIPvvwz3z2tj7mXGwQ%3d&risl=&pid=ImgRaw&r=0" alt="WhatsApp icon for Riya Diwakar">
+    </section>
+    <p>&copy; 2025 Sensor Dashboard. All rights reserved.</p>
+  </footer>
+  
+  <script src="script.js"></script>

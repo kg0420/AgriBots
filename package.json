@@ -1,0 +1,17 @@
+{
+    "name": "my-node-server",
+    "version": "1.0.0",
+    "description": "A Node.js server for reading Arduino sensor data",
+    "main": "server.js",
+    "scripts": {
+      "start": "node server.js"
+    },
+    "dependencies": {
+      "express": "^4.17.1",
+      "serialport": "^10.4.0",
+      "@serialport/parser-readline": "^10.4.0"
+    },
+    "author": "",
+    "license": "ISC"
+  }
+  
