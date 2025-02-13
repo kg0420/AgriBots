@@ -2,14 +2,14 @@ body {
   font-family: 'Roboto', sans-serif;
   margin: 0;
   padding: 0;
-  background: linear-gradient(120deg, #f9f9f9 0%, #ffffff 100%);
+  background: linear-gradient(120deg, #e0e7ff 0%, #d1e0ff 100%); /* Updated background color */
   color: #333;
   background-position: center;
   background-attachment: fixed;
 }
 
 header {
-  background-color: #000000;
+  background-color: #1a1a1a; /* Darker shade for a professional look */
   color: white;
   padding: 0.4rem 0;
   text-align: center;
@@ -17,7 +17,7 @@ header {
 }
 /* Change font for website title */
 nav h1 {
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   font-size: 25px; /* Adjust size as needed */
   font-weight: bold;
   color: #ffffff; /* Optional: Change color */
@@ -41,6 +41,7 @@ nav ul li a {
   font-weight: 700;
   margin: 50px;
   padding: 30px;
+  font-family: 'Inter', sans-serif; /* Updated font */
 }
 
 nav ul li a:hover {
@@ -56,6 +57,8 @@ main {
   margin-top: 20px;
   overflow: hidden;
   white-space: nowrap;
+  font-family: 'Inter', sans-serif; /* Updated font */
+
 }
 
 .scrolling-text {
@@ -81,13 +84,14 @@ main {
 }
 
 .sensor, .prediction {
-  background-color: rgba(255, 255, 255, 0.903);
+  background-color: rgba(255, 255, 255, 0.95);
   border: 1px solid #c10000bc;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   padding: 15px;
   text-align: center;
   width: 200px;
+  font-family: 'Inter', sans-serif; /* Updated font */
 }
 
 .sensor h2, .prediction h2 {
@@ -95,6 +99,8 @@ main {
   margin-bottom: 10px;
   border-bottom: 1px solid #c10000bc;
   padding-bottom: 5px;
+  font-family: 'Montserrat', sans-serif; /* Updated font */
+
 }
 
 .gauge {
@@ -107,7 +113,7 @@ main {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  width: 80%;
+  width: 100%;
   flex-wrap: wrap;
 }
 
@@ -120,6 +126,8 @@ main {
   border-bottom: 2px solid #000;
   margin-bottom: 20px;
   padding-bottom: 10px;
+  font-family: 'Montserrat', sans-serif; /* Updated font */
+
 }
 
 .npk-sensor .npk-gauges {
@@ -147,9 +155,12 @@ main {
   border-bottom: 2px solid #000;
   margin-bottom: 20px;
   padding-bottom: 10px;
+  font-family: 'Montserrat', sans-serif; /* Updated font */
+
 }
 
 .temperature-prediction .day {
+  background-color: rgba(255, 228, 196, 0.8); /* Slightly more opaque */
   flex: 1;
   max-width: 150px;
   margin: 10px;
@@ -159,6 +170,8 @@ main {
   border-radius: 8px;
   padding: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  font-family: 'Inter', sans-serif; /* Updated font */
+
 }
 
 .temperature-prediction .day h3 {
@@ -182,6 +195,7 @@ main {
 }
 
 .feedback-suggestions {
+  background: rgba(255, 255, 255, 0.95); /* Slightly more opaque */
   background-position: center;
   margin: 20px auto; /* Center the section horizontally */
   margin-top: 20px;
@@ -191,12 +205,14 @@ main {
   padding: 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   width: 50%;
+  font-family: 'Inter', sans-serif; /* Updated font */
 }
 
 .feedback-suggestions h2 {
   color: #000000;
   margin-bottom: 20px;
   font-size: 1.5em;
+  font-family: 'Montserrat', sans-serif; /* Updated font */
 }
 
 .feedback-suggestions form {
@@ -212,6 +228,8 @@ main {
   border: 1px solid #dd0808;
   border-radius: 4px;
   font-size: 1em;
+  font-family: 'Inter', sans-serif; /* Updated font */
+
 }
 
 .feedback-suggestions button {
@@ -223,6 +241,7 @@ main {
   cursor: pointer;
   font-weight: 700;
   font-size: 1.1em;
+  font-family: 'Inter', sans-serif; /* Updated font */
 }
 
 .feedback-suggestions button:hover {
@@ -231,13 +250,15 @@ main {
 
 /* Footer */
 footer {
+  background: #1a1a1a; /* Darker shade for a professional look */
   display: left;
   justify-content: space-between;
   text-align: center;
-  padding: 10px;
+  padding: 9px;
   background: #000;
   color: #fff;
   margin-top: 50px;
+  font-family: 'Inter', sans-serif; /* Updated font */
 }
 
 
@@ -253,6 +274,8 @@ footer .social-icons a {
   color: #fff;
   text-decoration: none;
   margin: 0 10px;
+  font-family: 'Inter', sans-serif; /* Updated font */
+
 }
 
 .social-media-icons {
