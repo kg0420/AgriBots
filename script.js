@@ -14,11 +14,44 @@ document.addEventListener('DOMContentLoaded', function() {
   const gaugeNitrogen = new JustGage({ id: "gauge-nitrogen", value: 0, min: 0, max: 100, title: "Nitrogen (N)" });
   const gaugePhosphorus = new JustGage({ id: "gauge-phosphorus", value: 0, min: 0, max: 100, title: "Phosphorus (P)" });
   const gaugePotassium = new JustGage({ id: "gauge-potassium", value: 0, min: 0, max: 100, title: "Potassium (K)" });
+  const gaugePest = new JustGage({ id: "gauge-pest", value: 0, min: 0, max: 100, title: "Pest Detection Level" });
   const gaugeDay1 = new JustGage({ id: "gauge-day1", value: 0, min: -10, max: 100, title: "Day 1" });
   const gaugeDay2 = new JustGage({ id: "gauge-day2", value: 0, min: -10, max: 100, title: "Day 2" });
   const gaugeDay3 = new JustGage({ id: "gauge-day3", value: 0, min: -10, max: 100, title: "Day 3" });
   const gaugeDay4 = new JustGage({ id: "gauge-day4", value: 0, min: -10, max: 100, title: "Day 4" });
+  
+  const pestVideo = document.getElementById("pest-video");
+  const pestCountDisplay = document.getElementById("pest-count");  
 
+    // Auto-load the video stream from Flask
+    pestVideo.src = "http://localhost:5001/video_feed";
+
+    function fetchPestCount() {
+        fetch("http://localhost:5001/pest_count")
+            .then(response => response.json())
+            .then(data => {
+                const count = data.pest_count || 0;
+                gaugePest.refresh(count);
+                pestCountDisplay.textContent = `Pest Count: ${count}`;
+            })
+            .catch(error => console.error("Error fetching pest count:", error));
+    }
+    function checkServerStatus() {
+      fetch("http://localhost:5001/pest_count")
+          .then(response => {
+              if (!response.ok) throw new Error("Server not running");
+          })
+          .catch(error => {
+              console.log("Flask server not running. Starting it...");
+              fetch("http://localhost:5000/start_server");
+          });
+  }
+
+  // Check and start the server
+  checkServerStatus();
+
+    // Update pest count every 2 seconds
+    setInterval(fetchPestCount, 2000);
   function fetchWeatherAndForecastData() {
     Promise.all([
       fetch(weatherUrl).then(response => response.json()),
@@ -28,7 +61,7 @@ document.addEventListener('DOMContentLoaded', function() {
       gaugeTemperature.refresh(weatherData.main.temp || 0);
       document.getElementById('temperature-reading').textContent = `${weatherData.main.temp || 'N/A'} °C`;
       
-      const dailyTemperatures = forecastData.list.filter((item, index) => index % 8 === 0).slice(0, 4);
+      const dailyTemperatures = forecastData.list.filter((item, index) => index % 8 === 0);
       gaugeDay1.refresh(dailyTemperatures[0]?.main.temp || 0);
       gaugeDay2.refresh(dailyTemperatures[1]?.main.temp || 0);
       gaugeDay3.refresh(dailyTemperatures[2]?.main.temp || 0);
@@ -51,6 +84,7 @@ document.addEventListener('DOMContentLoaded', function() {
         gaugeNitrogen.refresh(data.nitrogen || 0);
         gaugePhosphorus.refresh(data.phosphorus || 0);
         gaugePotassium.refresh(data.potassium || 0);
+        gaugePest.refresh(data.pestDetection || 0);
         
         document.getElementById('humidity-reading').textContent = `${data.humidity || 'N/A'} %`;
         document.getElementById('soilMoisture-reading').textContent = data.soilMoisture || 'N/A';
@@ -59,11 +93,13 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('nitrogen-reading').textContent = data.nitrogen || 'N/A';
         document.getElementById('phosphorus-reading').textContent = data.phosphorus || 'N/A';
         document.getElementById('potassium-reading').textContent = data.potassium || 'N/A';
+        document.getElementById('pest-reading').textContent = data.pestDetection || 'N/A';
 
         document.getElementById('humidity-warning').textContent = data.humidity < 70 ? 'Low Humidity' : '';
         document.getElementById('moisture-warning').textContent = data.soilMoisture < 70 ? 'Low Moisture' : '';
         document.getElementById('RainFall-warning').textContent = data.waterLevel < 70 ? 'Heavy Rainfall' : '';
         document.getElementById('npk-warning').textContent = (data.nitrogen < 20 || data.phosphorus < 10 || data.potassium < 30) ? 'Low NPK Levels' : '';
+        document.getElementById('pest-warning').textContent = data.pestDetection > 50 ? 'High Pest Infestation' : '';
       })
       .catch(error => console.error('Error fetching sensor data:', error.message));
   }
