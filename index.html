@@ -21,7 +21,7 @@
         <li><a href="#feedback-suggestions" onclick="showSection('feedback-suggestions')">Feedback/Suggestions</a></li>
         <li><a href="#Toolkit">Toolkit</a></li>
         <li><a href="#contact" onclick="showSection('contact')">Contact</a></li>
-        <li><a href="#AgriBot">Agri Bot</a></li>
+        <li><a href="#AgriBot">AgriBot</a></li>
       </ul>
     </nav>
   </header>
@@ -81,7 +81,15 @@
                 <div id="gauge-potassium" class="gauge"></div>
                 <p id="potassium-reading"></p>
               </div>
+              <div class="sensor">
+                <h2>Pest Detection:</h2>
+                <div id="gauge-pest" class="gauge"></div>
+                <p id="pest-reading"></p>
+                <p id="pest-warning" class="warning"></p>
+                <img id="pest-video" width="400" height="300">
+              </div>
             </div>
+
             <p id="npk-warning" class="warning"></p>
             <div id="npk-info" class="hidden">
               <p>Nitrogen (N): Promotes leafy growth and is essential for photosynthesis.</p>
