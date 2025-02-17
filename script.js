@@ -15,43 +15,41 @@ document.addEventListener('DOMContentLoaded', function() {
   const gaugePhosphorus = new JustGage({ id: "gauge-phosphorus", value: 0, min: 0, max: 100, title: "Phosphorus (P)" });
   const gaugePotassium = new JustGage({ id: "gauge-potassium", value: 0, min: 0, max: 100, title: "Potassium (K)" });
   const gaugePest = new JustGage({ id: "gauge-pest", value: 0, min: 0, max: 100, title: "Pest Detection Level" });
-  const gaugeDay1 = new JustGage({ id: "gauge-day1", value: 0, min: -10, max: 100, title: "Day 1" });
-  const gaugeDay2 = new JustGage({ id: "gauge-day2", value: 0, min: -10, max: 100, title: "Day 2" });
-  const gaugeDay3 = new JustGage({ id: "gauge-day3", value: 0, min: -10, max: 100, title: "Day 3" });
-  const gaugeDay4 = new JustGage({ id: "gauge-day4", value: 0, min: -10, max: 100, title: "Day 4" });
-  
+
   const pestVideo = document.getElementById("pest-video");
-  const pestCountDisplay = document.getElementById("pest-count");  
+  const pestCountDisplay = document.getElementById("pest-count");
 
-    // Auto-load the video stream from Flask
-    pestVideo.src = "http://localhost:5001/video_feed";
+  // Auto-load the video stream from Flask
+  pestVideo.src = "http://localhost:5001/video_feed";
 
-    function fetchPestCount() {
-        fetch("http://localhost:5001/pest_count")
-            .then(response => response.json())
-            .then(data => {
-                const count = data.pest_count || 0;
-                gaugePest.refresh(count);
-                pestCountDisplay.textContent = `Pest Count: ${count}`;
-            })
-            .catch(error => console.error("Error fetching pest count:", error));
-    }
-    function checkServerStatus() {
-      fetch("http://localhost:5001/pest_count")
-          .then(response => {
-              if (!response.ok) throw new Error("Server not running");
-          })
-          .catch(error => {
-              console.log("Flask server not running. Starting it...");
-              fetch("http://localhost:5000/start_server");
-          });
+  function fetchPestCount() {
+    fetch("http://localhost:5001/pest_count")
+      .then(response => response.json())
+      .then(data => {
+        const count = data.pest_count || 0;
+        gaugePest.refresh(count);
+        pestCountDisplay.textContent = `Pest Count: ${count}`;
+      })
+      .catch(error => console.error("Error fetching pest count:", error));
+  }
+
+  function checkServerStatus() {
+    fetch("http://localhost:5001/pest_count")
+      .then(response => {
+        if (!response.ok) throw new Error("Server not running");
+      })
+      .catch(error => {
+        console.log("Flask server not running. Starting it...");
+        fetch("http://localhost:5000/start_server");
+      });
   }
 
   // Check and start the server
   checkServerStatus();
 
-    // Update pest count every 2 seconds
-    setInterval(fetchPestCount, 2000);
+  // Update pest count every 2 seconds
+  setInterval(fetchPestCount, 2000);
+
   function fetchWeatherAndForecastData() {
     Promise.all([
       fetch(weatherUrl).then(response => response.json()),
@@ -60,12 +58,22 @@ document.addEventListener('DOMContentLoaded', function() {
     .then(([weatherData, forecastData]) => {
       gaugeTemperature.refresh(weatherData.main.temp || 0);
       document.getElementById('temperature-reading').textContent = `${weatherData.main.temp || 'N/A'} °C`;
-      
-      const dailyTemperatures = forecastData.list.filter((item, index) => index % 8 === 0);
-      gaugeDay1.refresh(dailyTemperatures[0]?.main.temp || 0);
-      gaugeDay2.refresh(dailyTemperatures[1]?.main.temp || 0);
-      gaugeDay3.refresh(dailyTemperatures[2]?.main.temp || 0);
-      gaugeDay4.refresh(dailyTemperatures[3]?.main.temp || 0);
+      document.getElementById('wind-speed-reading').textContent = `${weatherData.wind.speed || 'N/A'} km/h`;
+
+      const dailyData = forecastData.list.filter((item, index) => index % 8 === 0);
+      const days = ['day1', 'day2', 'day3', 'day4'];
+
+      const today = new Date();
+      dailyData.forEach((data, index) => {
+        const date = new Date(today);
+        date.setDate(today.getDate() + index + 1);
+        const dateString = date.toLocaleDateString('en-GB', { month: 'short', day: 'numeric' });
+        document.querySelector(`#${days[index]} h3`).textContent = dateString;
+        
+        document.getElementById(`temperature-${days[index]}`).textContent = `${data.main.temp || 'N/A'} °C`;
+        document.getElementById(`humidity-${days[index]}`).textContent = `${data.main.humidity || 'N/A'} %`;
+        document.getElementById(`windspeed-${days[index]}`).textContent = `${data.wind.speed || 'N/A'} km/h`;
+      });
     })
     .catch(error => console.error('Error fetching weather/forecast data:', error));
   }
@@ -85,7 +93,7 @@ document.addEventListener('DOMContentLoaded', function() {
         gaugePhosphorus.refresh(data.phosphorus || 0);
         gaugePotassium.refresh(data.potassium || 0);
         gaugePest.refresh(data.pestDetection || 0);
-        
+
         document.getElementById('humidity-reading').textContent = `${data.humidity || 'N/A'} %`;
         document.getElementById('soilMoisture-reading').textContent = data.soilMoisture || 'N/A';
         document.getElementById('AirQuality-reading').textContent = data.AirQuality || 'N/A';
