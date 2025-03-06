@@ -19,9 +19,8 @@
         <li><a href="#home" onclick="showSection('Home')">Home</a></li>
         <li><a href="#about" onclick="showSection('about')">About</a></li>
         <li><a href="#feedback-suggestions" onclick="showSection('feedback-suggestions')">Feedback/Suggestions</a></li>
-        <li><a href="#Toolkit">Toolkit</a></li>
+        <li><a href="#Toolkit"onclick="showSection('Toolkit')">Toolkit</a></li>
         <li><a href="#AgriBot">AgriBot</a></li>
-        <li><a href="#contact" onclick="showSection('contact')">Contact</a></li>
       </ul>
     </nav>
   </header>
@@ -37,7 +36,7 @@
           <h2>Temperature:</h2>
           <div id="gauge-temperature" class="gauge"></div>
           <p>Wind Speed:<span id="wind-speed-reading"></span></p>
-          <p id="temperature-reading"></p>
+          <p>Temperature:<span  id="temperature-reading"></span></p>
         </div>
         <div class="sensor">
           <h2>Humidity:</h2>
@@ -47,6 +46,7 @@
         </div>
         <div class="sensor">
           <h2>Soil Moisture:</h2>
+          <p class="data">Soil Moisture: <span id="soilMoisture-reading">--</span></p>
           <div id="gauge-soilMoisture" class="gauge"></div>
           <p id="soilMoisture-reading"></p>
           <p id="moisture-warning" class="warning"></p>
@@ -129,8 +129,7 @@
           </div>
         </section>
       </section>
-      
-    </section>
+
     <section id="about" class="content-section" style="display: none;">
       <h2>About Our Project</h2>
       <p>AgriBotics is an innovative solution that integrates IoT, automation, and AI to revolutionize farming. Our system enhances precision agriculture by optimizing resource usage and improving yield predictions.</p>
@@ -162,28 +161,37 @@
         <li>🔹 Sustainable & eco-friendly agriculture – reduce wastage and improve soil health.</li>
         <li>To bridge the gap between traditional farming and modern technology, making precision agriculture accessible to every farmer—ensuring higher yields, reduced costs, and sustainable growth.
         
-        <h4>🎯 Our Mission:</h4>
+        <h2>🎯 Our Mission:</h2>
         <li>"To develop an intelligent, real-time monitoring and automation system that enhances farming efficiency through smart sensors, AI-powered pest detection, and automated irrigation, ensuring better productivity and sustainability."</li>
         <li>✅ Empower Farmers: Provide easy-to-use web & mobile dashboards for real-time monitoring.</li>
         <li>✅ Enhance Productivity: Optimize water usage, soil nutrients, and crop health with AI & IoT-based analytics.</li>
         <li>✅ Prevent Crop Loss: Detect pests early with AI-driven pest recognition and automated alerts.</li>
         <li>✅ Sustainability & Affordability: Build a cost-effective solution that benefits both small-scale & large-scale farmers.</li>
         <h5>Our Team</h5>
-        <li> by Riya Diwakar and she's dedicated team, we bring expertise in IoT, AI, and agriculture to create a seamless, automated, and data-driven farming experience.</li>
+        <li> by Krish Gupta and Ritesh Bhakare, we bring expertise in IoT, AI, and agriculture to create a seamless, automated, and data-driven farming experience.</li>
       </ul>    
     </section>
-    
+   
+  <section id="Toolkit-container">
+    </section>
+    <section id="Toolkit" class="content-section" style="display: none;">
+      <h1>Toolkits</h1>
+      <button type="submit">Turn ON/OFF pump</button>
+      <button type="submit">Turn ON/OFF Light</button>
+    </section>
+  </section>
+
     <section id="sugestion-container">
       <section id="feedback-suggestions" class="feedback-suggestions">
         <h2>Feedback/Suggestions</h2>
-        <form action="#" method="POST">
+        <form action="http://localhost:5000/submit" method="POST">
           <input type="text" name="name" id="Sugestions_input" placeholder="Your Name" required>
           <input type="email" name="email" placeholder="Your Email" required>
           <textarea name="message" placeholder="Your Message" required></textarea>
           <button type="submit">Send Message</button>
-        </form>
+        </form>        
       </section>
-      </section>
+    </section>
   </main>
   <footer>
     <div class="footer-logo">
@@ -193,9 +201,11 @@
       <h2>Team AgriBots</h2>
       <div class="contact-info">
         <ul>
-          <a href="https://wa.me/7219570360" target="_blank">Krish Gupta</a><img src="https://th.bing.com/th/id/R.2e999afd5539964988836b831e9f6aac?rik=rTbGfI9WCyCqzQ&riu=http%3a%2f%2f3.bp.blogspot.com%2f-ezTfOgu3msI%2fURXOG7LXQpI%2fAAAAAAAAA4Q%2fNsMEuE9SZ_U%2fs1600%2fwhatsapp.png&ehk=a2CAQ5ZW0v0dyLq9QSc0iMWWEFIPvvwz3z2tj7mXGwQ%3d&risl=&pid=ImgRaw&r=0" alt="WhatsApp icon for Krish Gupta">     
-          <a href="https://wa.me/8262921113" target="_blank">Ritesh Bhakare</a><img src="https://th.bing.com/th/id/R.2e999afd5539964988836b831e9f6aac?rik=rTbGfI9WCyCqzQ&riu=http%3a%2f%2f3.bp.blogspot.com%2f-ezTfOgu3msI%2fURXOG7LXQpI%2fAAAAAAAAA4Q%2fNsMEuE9SZ_U%2fs1600%2fwhatsapp.png&ehk=a2CAQ5ZW0v0dyLq9QSc0iMWWEFIPvvwz3z2tj7mXGwQ%3d&risl=&pid=ImgRaw&r=0" alt="WhatsApp icon for Ritesh Bhakare">
-          <a href="https://wa.me/8983878799" target="_blank">Riya Diwakar</a><img src="https://th.bing.com/th/id/R.2e999afd5539964988836b831e9f6aac?rik=rTbGfI9WCyCqzQ&riu=http%3a%2f%2f3.bp.blogspot.com%2f-ezTfOgu3msI%2fURXOG7LXQpI%2fAAAAAAAAA4Q%2fNsMEuE9SZ_U%2fs1600%2fwhatsapp.png&ehk=a2CAQ5ZW0v0dyLq9QSc0iMWWEFIPvvwz3z2tj7mXGwQ%3d&risl=&pid=ImgRaw&r=0" alt="WhatsApp icon for Riya Diwakar">
+          <img src="https://th.bing.com/th/id/R.2e999afd5539964988836b831e9f6aac?rik=rTbGfI9WCyCqzQ&riu=http%3a%2f%2f3.bp.blogspot.com%2f-ezTfOgu3msI%2fURXOG7LXQpI%2fAAAAAAAAA4Q%2fNsMEuE9SZ_U%2fs1600%2fwhatsapp.png&ehk=a2CAQ5ZW0v0dyLq9QSc0iMWWEFIPvvwz3z2tj7mXGwQ%3d&risl=&pid=ImgRaw&r=0" alt="WhatsApp icon for Krish Gupta"><a href="https://wa.me/7219570360" target="_blank">    Krish Gupta    </a>     
+          <img src="https://th.bing.com/th/id/R.2e999afd5539964988836b831e9f6aac?rik=rTbGfI9WCyCqzQ&riu=http%3a%2f%2f3.bp.blogspot.com%2f-ezTfOgu3msI%2fURXOG7LXQpI%2fAAAAAAAAA4Q%2fNsMEuE9SZ_U%2fs1600%2fwhatsapp.png&ehk=a2CAQ5ZW0v0dyLq9QSc0iMWWEFIPvvwz3z2tj7mXGwQ%3d&risl=&pid=ImgRaw&r=0" alt="WhatsApp icon for Ritesh Bhakare"><a href="https://wa.me/8262921113" target="_blank">    Ritesh Bhakare    </a>
+          <img src="https://th.bing.com/th/id/R.2e999afd5539964988836b831e9f6aac?rik=rTbGfI9WCyCqzQ&riu=http%3a%2f%2f3.bp.blogspot.com%2f-ezTfOgu3msI%2fURXOG7LXQpI%2fAAAAAAAAA4Q%2fNsMEuE9SZ_U%2fs1600%2fwhatsapp.png&ehk=a2CAQ5ZW0v0dyLq9QSc0iMWWEFIPvvwz3z2tj7mXGwQ%3d&risl=&pid=ImgRaw&r=0" alt="WhatsApp icon for Siddhesh Gorle "><a href="https://wa.me/9529883505" target="_blank">   Siddhesh Gorle    </a>
+          <img src="https://th.bing.com/th/id/R.2e999afd5539964988836b831e9f6aac?rik=rTbGfI9WCyCqzQ&riu=http%3a%2f%2f3.bp.blogspot.com%2f-ezTfOgu3msI%2fURXOG7LXQpI%2fAAAAAAAAA4Q%2fNsMEuE9SZ_U%2fs1600%2fwhatsapp.png&ehk=a2CAQ5ZW0v0dyLq9QSc0iMWWEFIPvvwz3z2tj7mXGwQ%3d&risl=&pid=ImgRaw&r=0" alt="WhatsApp icon for Yash Gawner"><a href="https://wa.me/8080108574" target="_blank">   Yash Gawner    </a>
+          <img src="https://th.bing.com/th/id/R.2e999afd5539964988836b831e9f6aac?rik=rTbGfI9WCyCqzQ&riu=http%3a%2f%2f3.bp.blogspot.com%2f-ezTfOgu3msI%2fURXOG7LXQpI%2fAAAAAAAAA4Q%2fNsMEuE9SZ_U%2fs1600%2fwhatsapp.png&ehk=a2CAQ5ZW0v0dyLq9QSc0iMWWEFIPvvwz3z2tj7mXGwQ%3d&risl=&pid=ImgRaw&r=0" alt="WhatsApp icon for Farmer Community"><a href=https://chat.whatsapp.com/GBbMenBAknAC8dqOSWkbUf target="_blank">     Farmer Community</a>
     </section>
     <p>&copy; 2025 Sensor Dashboard. All rights reserved.</p>
   </footer>
